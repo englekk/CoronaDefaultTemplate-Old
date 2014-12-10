@@ -4,8 +4,7 @@
 -- @Website http://apollocation.com, http://wonhada.com
 ----------------------------------------
 
-local _info = system.getInfo("model")
-if _info == nil then return end -- for HTML5
+if system.getInfo("model") == nil then return end -- for HTML5
 
 local aspectRatio = display.pixelHeight / display.pixelWidth
 
