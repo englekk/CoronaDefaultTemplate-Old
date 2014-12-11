@@ -1,4 +1,4 @@
 CoronaDefaultTemplate
 =====================
 
-Default Template of Corona SDK
+Default Template for Corona SDK
