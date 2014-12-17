@@ -14,5 +14,8 @@ require("CommonSettings")
 ---------------------------------
 -- 여기서부터 코딩하세요. 
 
+-- 완전한 풀스크린을 위한 코드
+-- native.setProperty( "androidSystemUiVisibility", "immersive" )
+
 local img = display.newImage("Icon.png")
 transition.to(img, {time=1000, x=150, y=150})
