@@ -36,6 +36,10 @@ end
 __appContentWidth__ = display.actualContentWidth
 __appContentHeight__ = display.actualContentHeight
 __isSimulator__ = system.getInfo("environment") == "simulator"
+__scaleFactor__ = 0.5 -- 모든 크기의 기준이 되는 비율 기준값
+__setScaleFactor = function (obj)
+	obj.width, obj.height = obj.width * __scaleFactor__, obj.height * __scaleFactor__
+end
 --====================================--
 
 -- Global 변수값 확인
@@ -44,3 +48,5 @@ __isSimulator__ = system.getInfo("environment") == "simulator"
 -- 앵커포인트 좌상단으로 세팅
 display.setDefault( "anchorX", 0 )
 display.setDefault( "anchorY", 0 )
+
+math.randomseed(os.time())
