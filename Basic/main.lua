@@ -21,6 +21,8 @@ local isAndroidFullScreen = true
 
 -- 이 함수가 시작점입니다. 나머지는 신경쓰지 마세요. (-:
 local function startApp()
+	require("CommonSettings")
+	
 	local img = display.newImage("Icon.png")
 	transition.to(img, {time=1000, x=150, y=150})
 end
@@ -30,7 +32,12 @@ local function on_SystemEvent(e)
 	local _type = e.type
 	if _type == "applicationStart" then -- 앱이 시작될 때
 		
-		local function onResized(event)
+		local isResized = false -- 리사이즈 함수 실행 여부
+		
+		local function onResized(e1)
+			Runtime:removeEventListener("resize", onResized)
+			isResized = true
+			
 			startApp()
 		end
 		
@@ -40,6 +47,12 @@ local function on_SystemEvent(e)
 		else -- 안드로이드이면서 풀 스크린 모드일 경우
 			Runtime:addEventListener("resize", onResized)
 			native.setProperty( "androidSystemUiVisibility", "immersiveSticky" )
+			
+			-- 소프트키 바가 없는 경우
+			local function on_Timer(e2)
+				if not isResized then onResized(nil) end
+			end
+			timer.performWithDelay(200, on_Timer, 1)
 		end
 		--======== 안드로이드 풀 스크린 적용(수정 불필요) End ========--
 		
