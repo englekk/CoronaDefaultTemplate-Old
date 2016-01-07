@@ -37,8 +37,9 @@ __appContentWidth__ = display.actualContentWidth
 __appContentHeight__ = display.actualContentHeight
 __isSimulator__ = system.getInfo("environment") == "simulator"
 __scaleFactor__ = 0.5 -- 모든 크기의 기준이 되는 비율 기준값
-__setScaleFactor = function (obj)
-	obj.width, obj.height = obj.width * __scaleFactor__, obj.height * __scaleFactor__
+__setScaleFactor = function (obj, ratio)
+	ratio = ratio or __scaleFactor__
+	obj.width, obj.height = obj.width * ratio, obj.height * ratio
 end
 --====================================--
 
