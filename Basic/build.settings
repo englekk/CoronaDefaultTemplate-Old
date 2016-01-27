@@ -41,6 +41,10 @@ settings = {
             UIApplicationExitsOnSuspend = false,
             UIStatusBarHidden = false,
             UIPrerenderedIcon = true,
+            NSAppTransportSecurity = 
+            {
+                NSAllowsArbitraryLoads = true
+            },
 --          UIAppFonts = {
 --              "폰트명.ttf"
 --          },
